@@ -171,6 +171,12 @@ NUMBERS: dict[str, tuple[NumberEntityDescription, ...]] = {
             name="Countdown",
             icon="mdi:timer",
         ),
+        NumberEntityDescription(
+            key=DPCode.COUNTDOWN,
+            name="Manual Watering Time",
+            icon="mdi:timer",
+            entity_category=EntityCategory.CONFIG,
+        ),
     ),
     # Siren Alarm
     # https://developer.tuya.com/en/docs/iot/categorysgbj?id=Kaiuz37tlpbnu
