@@ -170,6 +170,7 @@ NUMBERS: dict[str, tuple[NumberEntityDescription, ...]] = {
             key=DPCode.ONE_OFF,
             name="Countdown",
             icon="mdi:timer",
+            entity_category=EntityCategory.CONFIG,
         ),
     ),
     # Siren Alarm
