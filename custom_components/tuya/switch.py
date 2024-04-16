@@ -430,27 +430,6 @@ SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
             entity_category=EntityCategory.CONFIG,
         ),
     ),
-    # Smart Water Timer
-    "sfkzq": (
-        SwitchEntityDescription(
-            key=DPCode.SWITCH,
-            name="Switch",
-            icon="mdi:sprinkler-variant",
-        ),
-    ),
-    # Smart Water Timer2
-    "ggq": (
-        SwitchEntityDescription(
-            key=DPCode.SWITCH_1,
-            name="Switch 1",
-            icon="mdi:sprinkler-variant",
-        ),
-        SwitchEntityDescription(
-            key=DPCode.SWITCH_2,
-            name="Switch 2",
-            icon="mdi:sprinkler-variant",
-        ),
-    ),
     # Siren Alarm
     # https://developer.tuya.com/en/docs/iot/categorysgbj?id=Kaiuz37tlpbnu
     "sgbj": (
@@ -635,6 +614,13 @@ SWITCHES: dict[str, tuple[SwitchEntityDescription, ...]] = {
     # Smart Electricity Meter
     # https://developer.tuya.com/en/docs/iot/smart-meter?id=Kaiuz4gv6ack7
     "zndb": (
+        SwitchEntityDescription(
+            key=DPCode.SWITCH,
+            name="Switch",
+        ),
+    ),
+    # Smart Water Timer
+    "sfkzq": (
         SwitchEntityDescription(
             key=DPCode.SWITCH,
             name="Switch",

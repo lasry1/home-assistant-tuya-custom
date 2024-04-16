@@ -15,6 +15,8 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
     PERCENTAGE,
+    TIME_MINUTES,
+    TIME_SECONDS,
     EntityCategory,
     UnitOfElectricCurrent,
     UnitOfElectricPotential,
@@ -34,7 +36,6 @@ from .const import (
     TUYA_DISCOVERY_NEW,
     DPCode,
     DPType,
-    TuyaDeviceClass,
     UnitOfMeasurement,
 )
 
@@ -517,34 +518,32 @@ SENSORS: dict[str, tuple[TuyaSensorEntityDescription, ...]] = {
         ),
         *BATTERY_SENSORS,
     ),
-     # Smart Water Timer
+    # Smart Water Timer
     "sfkzq": (
         TuyaSensorEntityDescription(
             key=DPCode.WORK_STATE,
-            name="Mode",
-            device_class=TuyaDeviceClass.WORK_STATE,
-            entity_category=EntityCategory.DIAGNOSTIC,
+            name="Status",
         ),
-        # Total seconds of irrigation. Read-write value; the device appears to ignore the write action (maybe firmware bug)
         TuyaSensorEntityDescription(
             key=DPCode.TIME_USE,
-            name="Total Watering Time",
-            icon="mdi:history",
+            name="Total runtime",
+            native_unit_of_measurement=TIME_SECONDS,
             state_class=SensorStateClass.TOTAL_INCREASING,
-            entity_category=EntityCategory.DIAGNOSTIC,
+            icon="mdi:clock-outline",
         ),
-        # Number of seconds for the watering session. The device will automatically turn off after this time
         TuyaSensorEntityDescription(
-            key=DPCode.COUNTDOWN,
-            name="Countdown",
-            icon="mdi:timer-outline",
-            device_class=TuyaDeviceClass.COUNTDOWN,
-            entity_category=EntityCategory.DIAGNOSTIC,
+            key=DPCode.SMART_WEATHER,
+            name="Weather forecast",
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:weather-partly-cloudy",
         ),
-        *BATTERY_SENSORS,
-    ),
-     # Smart Water Timer2
-    "ggq": (
+        TuyaSensorEntityDescription(
+            key=DPCode.USE_TIME_ONE,
+            name="Last runtime",
+            native_unit_of_measurement=TIME_SECONDS,
+            state_class=SensorStateClass.MEASUREMENT,
+            icon="mdi:timer",
+        ),
         *BATTERY_SENSORS,
     ),
     # Water Detector
